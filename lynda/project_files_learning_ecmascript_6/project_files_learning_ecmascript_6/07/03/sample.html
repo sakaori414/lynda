@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample</title>
+<script>
+const url = 'http://api.open-notify.org/astros.json';
+function getSpacePeople(url) { 
+    return new Promise((resolves) => { 
+        const request = new XMLHttpRequest(); 
+        request.addEventListener('load',
+			() => resolves(JSON.parse(request.response))
+        ); 
+        request.open('GET', url); 
+        request.send(); 
+    }); 
+} 
+getSpacePeople(url).then( 
+    (spaceData) => console.log(spaceData.people) 
+); 
+</script>
+</head>
+
+<body>
+</body>
+</html>

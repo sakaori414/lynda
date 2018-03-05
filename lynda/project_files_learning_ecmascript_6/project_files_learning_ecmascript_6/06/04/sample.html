@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample</title>
+<script>
+class Point {
+	constructor(x = 0, y = 0) {
+		this.x = x;
+		this.y = y;
+	}
+	getLength() {
+		// const square = this.x ** 2 + this.y ** 2;
+		// return Math.sqrt(square);
+		return Math.hypot(this.x, this.y);
+	}
+	getAngle() {
+		return Math.atan2(this.y, this.x);
+	}
+}
+const point = new Point(1, Math.sqrt(3));
+console.log(point.getLength(), point.getAngle() * 180 / Math.PI);
+</script>
+</head>
+
+<body>
+</body>
+</html>

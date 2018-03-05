@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample</title>
+<script>
+class Point {
+	constructor(x = 0, y = 0, z = 0) {
+		this.x = x;
+		this.y = y;
+		this[Symbol.for('z')] = z;
+	}
+	get z() {
+		return this[Symbol.for('z')];
+	}
+	get length() {
+		return Math.hypot(this.x, this.y);
+	}
+	set length(_length) {
+		const scale = _length / this.length;
+		this.x *= scale;
+		this.y *= scale;
+	}
+	get angle() {
+		return Math.atan2(this.y, this.x);
+	}
+	static polar(radius, angle) {
+		return new Point(
+			radius * Math.cos(angle),
+			radius * Math.sin(angle)
+		);
+	}
+}
+class Vector extends Point {
+	constructor(x, y) {
+		super(x, y);
+	}
+	add(x, y) {
+		this.x += x;
+		this.y += y;
+	}
+	scale(scale) {
+		this.x *= scale;
+		this.y *= scale;
+	}
+}
+const point = new Point(3, 4, 5);
+point.x = 5;
+point.y = 5;
+// point.z = 0;
+point[Symbol.for('z')] = 0;
+console.log(point.x, point.y, point.z);
+console.log(point);
+</script>
+</head>
+
+<body>
+</body>
+</html>

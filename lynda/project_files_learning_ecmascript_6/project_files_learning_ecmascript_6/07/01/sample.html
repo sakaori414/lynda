@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample</title>
+<script>
+function delay(seconds) {
+	return new Promise((resolve) =>
+		setTimeout(() => resolve(`${seconds} second delay is up`),
+		seconds * 1000)
+	);
+}
+delay(1).then(console.log);
+</script>
+</head>
+
+<body>
+</body>
+</html>

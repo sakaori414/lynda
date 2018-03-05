@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample</title>
+<script>
+const obj = new Map();
+obj.set('a', 0);
+obj.set('b', 1);
+obj.set('c', 2);
+// console.log(obj);
+// for (let [key, value] of obj) {
+obj.forEach(function(value, key) {
+	console.log(key, value);
+});
+</script>
+</head>
+
+<body>
+</body>
+</html>

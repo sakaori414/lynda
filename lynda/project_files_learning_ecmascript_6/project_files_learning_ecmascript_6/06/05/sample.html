@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample</title>
+<script>
+class Point {
+	constructor(x = 0, y = 0) {
+		this.x = x;
+		this.y = y;
+	}
+	getLength() {
+		return Math.hypot(this.x, this.y);
+	}
+	getAngle() {
+		return Math.atan2(this.y, this.x);
+	}
+}
+class Vector extends Point {
+	constructor(x, y) {
+		super(x, y);
+	}
+}
+const vector = new Vector(1, Math.sqrt(3));
+console.log(vector.getLength(), vector.getAngle() * 180 / Math.PI);
+</script>
+</head>
+
+<body>
+</body>
+</html>

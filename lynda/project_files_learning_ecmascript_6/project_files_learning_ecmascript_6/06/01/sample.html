@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample</title>
+<script>
+function Point(x, y) {
+	this.x = (x) ? x : 0;
+	this.y = (y) ? y : 0;
+}
+Point.prototype.getLength = function() {
+	var square = this.x * this.x + this.y * this.y;
+	return Math.sqrt(square);
+};
+Point.prototype.getAngle = function() {
+	return Math.atan2(this.y, this.x);
+};
+Point.RAD_TO_DEG = 180 / Math.PI;
+Point.polar = function(radius, angle) {
+	return new Point(
+		radius * Math.cos(angle),
+		radius * Math.sin(angle)
+	);
+};
+function Vector(x, y) {
+	Point.call(this, x, y);
+}
+Vector.prototype = Object.create(Point.prototype);
+Vector.prototype.add = function(x, y) {
+	this.x += x;
+	this.y += y;
+};
+Vector.prototype.scale = function(scale) {
+	this.x *= scale;
+	this.y *= scale;
+};
+var vector = new Vector(0.5);
+vector.scale(2);
+vector.add(0, Math.sqrt(3));
+console.log(vector);  // {x: 1, y: √3}
+console.log(vector.getLength(), vector.getAngle() * Point.RAD_TO_DEG);  // 2 60
+var point = Point.polar(2, Math.PI / 3);
+console.log(point.getLength(), point.getAngle() * Point.RAD_TO_DEG);  // 2 60
+</script>
+</head>
+
+<body>
+</body>
+</html>

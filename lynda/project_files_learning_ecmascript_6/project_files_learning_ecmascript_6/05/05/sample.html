@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample</title>
+<script>
+function draw(side, count) {
+    var context2d = document.getElementById('myCanvas').getContext('2d');
+    var amount = count * count;
+    var angle = 360 / (amount - 1);
+    /* for (var i = 0; i < count; i++) {
+        for (var j = 0; j < count; j++) {
+            context2d.fillStyle = 'hsl(' + angle * (i * count + j) + ', 100%, 50%)';
+            context2d.fillRect(j * side, i * side, side, side);
+        }
+    } */
+	new Array(amount).fill(0, 0).map((data, i) => ({
+		color: `hsl(${angle * i}, 100%, 50%)`,
+		x: i % count * side,
+		y: Math.floor(i / count) * side
+	}))
+	.forEach((data) => {
+		context2d.fillStyle = data.color;
+		context2d.fillRect(data.x, data.y, side, side);
+	});
+}
+document.addEventListener('DOMContentLoaded', function() {
+	draw(25, 4);
+});
+</script>
+</head>
+
+<body>
+	<canvas id="myCanvas" width="400" height="300"></canvas>
+</body>
+</html>
