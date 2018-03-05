@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <title>Sample</title>
     <script>
-    const array = [];
-    for (let i = 0; i<3; i++){
-    	array.push(i);
-    }
-    array[0] = 100;
-    console.log(array);
+        const data = [2017, 0, 1];
+        const time = [12, 30, 0];
+        data.push(...time);
+        const max = Math.max(2018, ...data, 2019);
+        const date = new Date(...data);
+        console.log(max);
     </script>
 </head>
 
